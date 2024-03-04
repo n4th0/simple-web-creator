@@ -1,0 +1,26 @@
+
+/* DEFAULT THEME PARA LA WEB */
+
+body{
+    margin:100px, 100px, 100px, 100px;
+    padding: 50px,50px,50px,50px;
+    background-color: black;
+}
+
+h1{
+    margin: 50px, 20px, 50px, 20px;
+    padding: 50px,50px,50px,50px;
+    color: white;
+    height: 100px;
+    
+}
+
+p{
+    background-color: grey;
+    padding: 50px,50px,50px,50px;
+
+    border-radius: 10px;
+    height: 50px;
+    line-height: 25px;
+
+}
