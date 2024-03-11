@@ -33,11 +33,6 @@ void showDisplay(display d){
 
 int main(){
 
-    showDisplay(MENU);
-    sleep(4);
-    showDisplay(clean);
-    showDisplay(askP);
-    showDisplay(askH3);
 
 
     return 0;
