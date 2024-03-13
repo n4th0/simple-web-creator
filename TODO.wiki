@@ -1,0 +1,15 @@
+
+
+=== TODO LIST ===
+* [ ] cattpuccin
+* [ ] monokai
+* [ ] more themes
+* [ ] dark
+* [ ] white
+* [ ] onedark
+* [ ] dracula
+* [ ] seleccionar los items que quieras (añadir la funcionalidad de clases)
+    
+    
+    
+

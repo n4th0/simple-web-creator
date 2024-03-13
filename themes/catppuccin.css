@@ -1,0 +1,31 @@
+/* la paleta está sacada del github https://github.com/catppuccin/catppuccin 
+ * pink
+ * #f5bde6
+ * peach?
+ * #f5a97f
+ *
+ * green
+ * #a6da95
+ * saphire
+ * #7dc4e4
+ * black
+ * #24273a
+ *
+ * */
+
+html,body{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+*{
+    color: #24273a;
+    background-color: #f5bde6;
+
+}
+
+h3{
+    background-color:#a6da95 ;
+}
+
+

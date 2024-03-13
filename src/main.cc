@@ -1,9 +1,18 @@
-
-#include <bits/types/wint_t.h>
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
+
 using namespace std;
+
+enum themes{
+    dark,
+    white,
+    catppuccin,
+    onedark,
+    monokai,
+    dracula,
+    neon
+};
 
 enum display{
     MENU,
@@ -14,6 +23,25 @@ enum display{
     askH3,
     clean
 };
+string getTheme(themes t){
+    switch (t) {
+        case dark: 
+                return "";
+        case white: 
+                return "";
+        case catppuccin:
+                return "";
+        case onedark: 
+                return "";
+        case monokai: 
+                return "";
+        case dracula: 
+                return "";
+        case neon: 
+                return "";
+    }
+}
+
 void showDisplay(display d){
     switch (d) {
         case MENU: 
@@ -47,6 +75,7 @@ int initializeFile(string fileName, string theme){
     return 0;
 }
 
+string themes();
 
 int introduceHTML(string fileName, string content, string type){
     ofstream fichero;
