@@ -48,7 +48,7 @@ int initializeFile(string fileName, string theme){
 }
 
 
-int introduce(string fileName, string content, string type){
+int introduceHTML(string fileName, string content, string type){
     ofstream fichero;
     fichero.open(fileName, ios::app);
 
@@ -77,15 +77,15 @@ int main(){
         switch (option) {
             case 1:
                 getline(cin, content);
-                introduce(file, content, "h1");
+                introduceHTML(file, content, "h1");
                 break;
             case 2:
                 getline(cin, content);
-                introduce(file, content, "h3");
+                introduceHTML(file, content, "h3");
                 break;
             case 3:
                 getline(cin, content);
-                introduce(file, content, "p");
+                introduceHTML(file, content, "p");
                 break;
             case 4:
                 // para el href la sintaxis cambia  
