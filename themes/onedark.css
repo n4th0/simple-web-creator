@@ -1,0 +1,19 @@
+html,body{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+*{
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: bold;
+
+    color: #e06c75;
+    background-color: #282c34;
+
+}
+
+
+.selected{
+    background-color:#abb2bf ;
+}

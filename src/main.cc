@@ -2,6 +2,8 @@
 #include <fstream>
 #include <unistd.h>
 
+#define EXT ".html"
+
 using namespace std;
 
 enum themes{
@@ -22,24 +24,28 @@ enum display{
     askHREF,
     askH3,
     askSelected,
+    askTheme,
     clean
 };
-string getTheme(themes t){
+
+string getTheme(int t){
     switch (t) {
-        case dark: 
-            return "";
-        case white: 
-            return "";
-        case catppuccin:
-            return "";
-        case onedark: 
-            return "";
-        case monokai: 
-            return "";
-        case dracula: 
-            return "";
-        case neon: 
-            return "";
+        case 1: 
+            return "../theme/dark.css";
+        case 2: 
+            return "../theme/white.css";
+        case 3:
+            return "../theme/catppuccin.css";
+        case 4: 
+            return "../theme/onedark.css";
+        case 7: 
+            return "../theme/monokai.css";
+        case 5: 
+            return "../theme/dracula.css";
+        case 6: 
+            return "../theme/neon.css";
+        default:
+            return "../themes/default.css";
     }
 }
 
@@ -60,29 +66,31 @@ void showDisplay(display d){
                     break;
         case askSelected: cout << "Quieres que esté seleccionado?[y/n]: ";
                           break;
+        case askTheme: cout << " Elige la opción: \n 1- Dark\n 2- White\n 3- Catpuccin\n 4- Onedark\n 5- Dracula\n 6- Neon\n 7- Monokai\n Opción: ";
+                          break;
         case clean: cout << "\e[1;1H\e[2J"<< endl;
                     break;
     }
 
 }
+
 /// create the html structure
 int initializeFile(string fileName, string theme){
     ofstream fichero;
     string ubuntu = "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap\" rel=\"stylesheet\"> ";
 
     string s = "<html>"+ubuntu+"<link rel=\"stylesheet\" href="+ theme+">" "<title>"+fileName+"</title></html><body>";
-    fichero.open(fileName, ios::out);
+    fichero.open(fileName+EXT, ios::out);
     fichero << s;
 
     fichero.close();
     return 0;
 }
 
-string themes();
 
 int introduceHTML(string fileName, string content, string type, bool selected){
     ofstream fichero;
-    fichero.open(fileName, ios::app);
+    fichero.open(fileName+EXT, ios::app);
 
     if(selected){
         fichero<< "<"+type+" class=\"selected\" "+">"+content+"</"+type+">";
@@ -96,21 +104,30 @@ int introduceHTML(string fileName, string content, string type, bool selected){
 
 
 int main(){
-    string aux, file, theme = "../themes/default.css";
-    bool exit = false, selected;
+    string aux, file, theme;
+    bool exit = false;
     int option;
     string content, auxiliar;
 
     showDisplay(Inicio);
     getline(cin, file);
-    initializeFile(file, theme);
+
+    showDisplay(askTheme);
+    getline(cin, theme);
+
+    if (theme.empty()) {
+        initializeFile(file, getTheme(0));
+    }else {
+        initializeFile(file, getTheme(stoi(theme)));
+    }
+
+
 
     while (!exit) {
         showDisplay(clean);
         showDisplay(MENU);
         getline(cin, auxiliar);
         option = stoi(auxiliar);
-        selected = false;
 
         switch (option) {
             case 1:
