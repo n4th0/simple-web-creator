@@ -21,24 +21,25 @@ enum display{
     askP,
     askHREF,
     askH3,
+    askSelected,
     clean
 };
 string getTheme(themes t){
     switch (t) {
         case dark: 
-                return "";
+            return "";
         case white: 
-                return "";
+            return "";
         case catppuccin:
-                return "";
+            return "";
         case onedark: 
-                return "";
+            return "";
         case monokai: 
-                return "";
+            return "";
         case dracula: 
-                return "";
+            return "";
         case neon: 
-                return "";
+            return "";
     }
 }
 
@@ -48,17 +49,19 @@ void showDisplay(display d){
             cout << " Elige la opción: \n 1- Crear titulo\n 2- Crear subtitulo\n 3- Crear párrafo\n 4- Crear enlace\n 5- Salir\n Opción: ";
             break;
         case Inicio: cout << "Dime el nombre de tu página web: ";
-            break;
+                     break;
         case askH1: cout << "Dime el titulo de tu página web: ";
-            break;
+                    break;
         case askP: cout << "Dime el contenido de tu apartado: ";
-            break;
+                   break;
         case askHREF: cout << "Introduce el enlace: ";
-            break;
+                      break;
         case askH3: cout << "Introduce el titulo del apartado: ";
-            break;
+                    break;
+        case askSelected: cout << "Quieres que esté seleccionado?[y/n]: ";
+                          break;
         case clean: cout << "\e[1;1H\e[2J"<< endl;
-            break;
+                    break;
     }
 
 }
@@ -77,19 +80,24 @@ int initializeFile(string fileName, string theme){
 
 string themes();
 
-int introduceHTML(string fileName, string content, string type){
+int introduceHTML(string fileName, string content, string type, bool selected){
     ofstream fichero;
     fichero.open(fileName, ios::app);
 
-    fichero<< "<"+type+">"+content+"</"+type+">";
+    if(selected){
+        fichero<< "<"+type+" class=\"selected\" "+">"+content+"</"+type+">";
+
+    }else {
+        fichero<< "<"+type+">"+content+"</"+type+">";
+    }
     fichero.close();
     return 0;
 }
 
 
 int main(){
-    string s, file, theme = "../themes/default.css";
-    bool exit = false;
+    string aux, file, theme = "../themes/default.css";
+    bool exit = false, selected;
     int option;
     string content, auxiliar;
 
@@ -102,19 +110,40 @@ int main(){
         showDisplay(MENU);
         getline(cin, auxiliar);
         option = stoi(auxiliar);
+        selected = false;
 
         switch (option) {
             case 1:
                 getline(cin, content);
-                introduceHTML(file, content, "h1");
+                showDisplay(askSelected);
+                getline(cin, aux);
+                if (aux == "y") {
+                    introduceHTML(file, content, "h1", true);
+                }else {
+                    introduceHTML(file, content, "h1", false);
+                }
                 break;
             case 2:
                 getline(cin, content);
-                introduceHTML(file, content, "h3");
+                showDisplay(askSelected);
+                getline(cin, aux);
+
+                if (aux == "y") {
+                    introduceHTML(file, content, "h3", true);
+                }else {
+                    introduceHTML(file, content, "h3", false);
+                }
                 break;
             case 3:
                 getline(cin, content);
-                introduceHTML(file, content, "p");
+                showDisplay(askSelected);
+                getline(cin, aux);
+
+                if (aux == "y") {
+                    introduceHTML(file, content, "p", true);
+                }else {
+                    introduceHTML(file, content, "p", false);
+                }
                 break;
             case 4:
                 // para el href la sintaxis cambia  
@@ -124,16 +153,11 @@ int main(){
             case 5:
                 exit = true;
                 break;
-        
+
         }
     }
 
 
 
-
-
-
-
     return 0;
 }
-
