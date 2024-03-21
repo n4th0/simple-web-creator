@@ -31,19 +31,19 @@ enum display{
 string getTheme(int t){
     switch (t) {
         case 1: 
-            return "../theme/dark.css";
+            return "../themes/dark.css";
         case 2: 
-            return "../theme/white.css";
+            return "../themes/white.css";
         case 3:
-            return "../theme/catppuccin.css";
+            return "../themes/catppuccin.css";
         case 4: 
-            return "../theme/onedark.css";
+            return "../themes/onedark.css";
         case 7: 
-            return "../theme/monokai.css";
+            return "../themes/monokai.css";
         case 5: 
-            return "../theme/dracula.css";
+            return "../themes/dracula.css";
         case 6: 
-            return "../theme/neon.css";
+            return "../themes/neon.css";
         default:
             return "../themes/default.css";
     }
